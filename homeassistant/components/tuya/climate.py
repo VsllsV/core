@@ -130,11 +130,16 @@ class TuyaClimateEntity(TuyaDevice, ClimateEntity):
         """Return the list of available operation modes."""
         return self.operations
 
+    #@property
+    #def current_temperature(self):
+    #    """Return the current temperature."""
+    #    return self._tuya.current_temperature()
+    
     @property
     def current_temperature(self):
-        """Return the current temperature."""
-        return self._tuya.current_temperature()
-
+        temp = float(self.tuya.current_temperature())/2
+        return temp
+    
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
